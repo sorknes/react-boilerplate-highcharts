@@ -8,6 +8,14 @@ import React, {Component} from 'react';
 // components
 import Chart from './Chart/Chart';
 
+// react-widgets
+import 'react-widgets/lib/scss/react-widgets.scss';
+import DropdownList from 'react-widgets/lib/DropdownList';
+
+const colors = [
+  'orange', 'red', 'blue', 'purple', 'long color description'
+];
+
 const zaxisBarData = [
   'Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas'
 ];
@@ -103,36 +111,54 @@ const drilldownOne = [
 ];
 
 class Charts extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+  };
 
   render() {
     return (
       <div>
         <div className="container container--charts">
-          <Chart
-            title="Fruit Consumption"
-            subtitle="Bar chart"
-            chart="bar"
-            zaxis={zaxisBarData}
-            yaxis="Fruit eaten"
-            series={seriesOne} />
+          <div className="container--charts__chart">
+            <div className="chart-content">
+              <Chart
+                title="Fruit Consumption"
+                subtitle="Bar chart"
+                chart="line"
+                zaxis={zaxisBarData}
+                yaxis="Fruit eaten"
+                series={seriesOne} />
+            </div>
+          </div>
 
-          <Chart
-            title="Browser stats"
-            subtitle="Pie chart"
-            chart="pie"
-            series={seriesTwo} />
+          <div className="container--charts__chart">
+            <div className="chart-content">
+              <Chart
+                title="Browser stats"
+                subtitle="Pie chart"
+                chart="pie"
+                series={seriesTwo} />
+            </div>
+          </div>
         </div>
 
         <div className="container">
-          <Chart
-            title="Drill down"
-            subtitle="Bar chart"
-            chart="bar"
-            series={seriesThree}
-            drilldown={drilldownOne} />
+          <div className="container--charts__chart">
+            <div className="chart-content">
+              <div className="chart-content__tools">
+                <small>Velg visning:</small>
+
+                <DropdownList defaultValue={ 'orange' } data={colors} />
+              </div>
+
+              <Chart
+                title="Drill down"
+                subtitle="Bar chart"
+                chart="column"
+                series={seriesThree}
+                drilldown={drilldownOne} />
+            </div>
+          </div>
         </div>
       </div>
     )

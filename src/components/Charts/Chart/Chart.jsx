@@ -6,12 +6,13 @@
 import React, {Component} from 'react';
 import Highcharts from 'highcharts';
 
-// components
+// highcharts components
 import Highmaps from 'highcharts/highmaps';
 
-// modules
+// highcharts modules
 import Drilldown from 'highcharts/modules/drilldown.src';
 import Exporting from 'highcharts/modules/exporting.src';
+
 
 // call import
 Drilldown(Highcharts);
@@ -37,18 +38,39 @@ class Chart extends Component {
       this.refs.container,
       {
         plotOptions: {
+          line: {
+            animation: false,
+            states: {
+              hover: {
+                lineWidth: 5
+              }
+            }
+          },
           areaspline: {
             fillOpacity: 0.5
           }
         },
         lang: {
-          drillUpText: 'Tilbake til "{series.name}"'
+          drillUpText: '← Tilbake til "{series.name}"'
         },
         exporting: {
-          filename: 'Navn diagram' + ' - ' + this.props.title
+          filename: 'Navn diagram' + ' - ' + this.props.title,
+          buttons: {
+            contextButton: {
+              text: 'Lagre som bilde',
+              symbol: null,
+              x: 0,
+              y: 20,
+              verticalAlign: 'bottom',
+              onclick: function () {
+                this.exportChart();
+              }
+            }
+          }
         },
-        colors: ['#f6c034', '#7e9b40', '#db8100', '#809ba0', '#117eb4', '#79006c', '#574319'],
+        colors: ['#f6c034', '#db8100', '#7e9b40', '#809ba0', '#117eb4', '#79006c', '#574319'],
         chart: {
+          height: 'auto',
           plotBackgroundColor: null,
           plotBorderWidth: null,
           plotShadow: false,
@@ -102,8 +124,8 @@ class Chart extends Component {
           series: this.props.drilldown,
           drillUpButton: {
             position: {
-              x: 8,
-              y: -64
+              x: -3,
+              y: -55
             },
             theme: {
               style: {
@@ -135,13 +157,8 @@ class Chart extends Component {
   }
 
   render() {
-    return (
-      <div className="container--charts__charts">
-        <div className="content">
-          {/* <h2>{this.props.title}</h2> */}
-          <div ref="container" />
-        </div>
-      </div>
+    return (         
+      <div ref="container" />
     )
   }
 }

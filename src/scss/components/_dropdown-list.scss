@@ -1,0 +1,15 @@
+/*  ./src/scss/components/_dropdown-list.scss
+*/
+
+.rw-widget {
+  display: inline-flex;
+  border-radius: 0;
+
+  .rw-popup {
+    box-shadow: none;
+  }
+
+  .rw-popup-container {
+    width: 200px;
+  }
+}

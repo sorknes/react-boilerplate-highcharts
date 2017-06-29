@@ -1,7 +1,10 @@
 /*  ./src/scss/main.scss
 */
 
+$rw-font-path: '~react-widgets/lib/fonts';
+$rw-img-path:  '~react-widgets/lib/img';
 
 @import "base";
 
-// @import "components/highcharts";
+@import "components/highcharts";
+@import "components/dropdown-list";
