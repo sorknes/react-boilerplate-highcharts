@@ -81,6 +81,7 @@ const seriesThree = [
 const drilldownOne = [
   {
     type: 'areaspline',
+    inverted: true,
     name: 'Animals',
     id: 'animals',
     data: [
@@ -148,13 +149,15 @@ class Charts extends React.Component {
               <div className="chart-content__tools">
                 <small>Velg visning:</small>
 
-                <DropdownList defaultValue={ 'orange' } data={colors} />
+                <DropdownList
+                  defaultValue={ 'orange' }
+                  data={colors} />
               </div>
 
               <Chart
                 title="Drill down"
                 subtitle="Bar chart"
-                chart="column"
+                chart="bar"
                 series={seriesThree}
                 drilldown={drilldownOne} />
             </div>
