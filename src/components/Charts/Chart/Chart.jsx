@@ -71,6 +71,8 @@ class Chart extends Component {
         colors: ['#f6c034', '#db8100', '#7e9b40', '#809ba0', '#117eb4', '#79006c', '#574319'],
         chart: {
           height: 'auto',
+          marginRight: 50,
+          marginLeft: 50,
           plotBackgroundColor: null,
           plotBorderWidth: null,
           plotShadow: false,
@@ -101,31 +103,44 @@ class Chart extends Component {
           }
         },
         xAxis: {
-          categories: this.props.zaxis,
+          opposite: this.props.xOpposite,
+          categories: this.props.xAxis,
           title: {
             text: null
           },
-          lineColor: '#333',
-          lineWidth: 0.5,
-          tickLength: 0
+          // plotBands: [{
+          //   color: 'orange', // Color value
+          //   from: 1, // Start of the plot band
+          //   to: 2 // End of the plot band
+          // }],
+          // plotLines: [{
+          //   color: 'red', // Color value
+          //   dashStyle: 'longdashdot', // Style of the plot line. Default to solid
+          //   value: 3, // Value of where the line will appear
+          //   width: 2 // Width of the line    
+          // }],
+          gridLineWidth: this.props.xLineWidth,
+          gridLineDashStyle: this.props.xLineDashStyle,
+          gridLineColor: '#a5aaad',
+          lineWidth: 0,
         },
         yAxis: {
           title: {
-            text: this.props.yaxis
+            text: this.props.yAxis
           },
-          gridLineDashStyle: 'dot',
+          gridLineWidth: 1,
+          gridLineDashStyle: this.props.yLineDashStyle,
           gridLineColor: '#a5aaad',
-          lineColor: '#333',
-          lineWidth: 0.5,
-          tickLength: 0
+          lineColor: '#a5aaad',
+          lineWidth: 1,
         },
         series: this.props.series,
         drilldown: {
           series: this.props.drilldown,
           drillUpButton: {
             position: {
-              x: -3,
-              y: -55
+              x: 37,
+              y: -80
             },
             theme: {
               style: {

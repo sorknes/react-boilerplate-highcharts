@@ -16,7 +16,7 @@ const colors = [
   'orange', 'red', 'blue', 'purple', 'long color description'
 ];
 
-const zaxisBarData = [
+const xaxisOne = [
   'Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas'
 ];
 
@@ -60,6 +60,7 @@ const seriesTwo = [
 
 const seriesThree = [
   {
+    opposite: true,
     name: 'Things',
     colorByPoint: true,
     data: [{
@@ -126,8 +127,9 @@ class Charts extends React.Component {
                 title="Fruit Consumption"
                 subtitle="Bar chart"
                 chart="line"
-                zaxis={zaxisBarData}
-                yaxis="Fruit eaten"
+                xAxis={xaxisOne}
+                yAxis="Fruit eaten"
+                yLineDashStyle="dash"
                 series={seriesOne} />
             </div>
           </div>
@@ -157,7 +159,11 @@ class Charts extends React.Component {
               <Chart
                 title="Drill down"
                 subtitle="Bar chart"
-                chart="bar"
+                chart="column"
+                xOpposite="true"
+                xLineWidth="1"
+                xLineDashStyle="solid"
+                yLineDashStyle="solid"
                 series={seriesThree}
                 drilldown={drilldownOne} />
             </div>
